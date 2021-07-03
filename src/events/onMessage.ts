@@ -9,10 +9,15 @@ export const onMessage = async (message: Message) => {
     if(!message.content.startsWith(prefix)) {
         return
     }
-    for (const Command of CommandList) {
-        if (message.content.startsWith(prefix + Command.name)) {
-          await Command.run(message);
-          break;
-        }
+    // for (const Command of CommandList) {
+    //     if (message.content.startsWith(prefix + Command.name)) {
+    //       await Command.run(message);
+    //       break;
+    //     }
+    // }
+
+    if(message.content.startsWith(prefix)){
+        const { author, channel, content } = message;
+        await channel.send("<@" + author + ">" + " sent a message!")
     }
 };
