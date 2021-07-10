@@ -28,7 +28,7 @@ export const daily: CommandInt = {
             targetUser.dailyStreak++
 
             targetUser.save()
-            await channel.send("<@" + author + ">" + " you have claimed your daily! Credit balance = " + targetUser.currency + ". Streak = " + targetUser.dailyStreak)
+            await channel.send("<@" + author + ">" + " you have claimed your daily! Your credit balance = " + targetUser.currency + ". Streak = " + targetUser.dailyStreak)
         }
     }
 }
