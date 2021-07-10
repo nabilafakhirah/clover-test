@@ -10,7 +10,7 @@ export const daily: CommandInt = {
         let targetUser = await UserModel.findOne({discordId: author.id})
 
         if(!targetUser) {
-            await channel.send("<@" + author + ">" + " you haven't initialized a profile! Do ,start to initialize a profile.")
+            await channel.send("<@" + author + ">" + " you haven't initialized a profile! Use ,start to initialize your profile and begin using the bot.")
         } else {
             if(targetUser.lastDaily != -1){
                 var hours = Math.abs(Date.now() - targetUser.lastDaily) / 36e5;
@@ -28,7 +28,7 @@ export const daily: CommandInt = {
             targetUser.dailyStreak++
 
             targetUser.save()
-            await channel.send("<@" + author + ">" + " you have claimed your daily! Your credit balance = " + targetUser.currency + ". Streak = " + targetUser.dailyStreak)
+            await channel.send("<@" + author + ">" + " you have claimed your daily! Your current balance = " + targetUser.currency + ". Streak = " + targetUser.dailyStreak)
         }
     }
 }
@@ -42,9 +42,9 @@ export const balance: CommandInt = {
         let targetUser = await UserModel.findOne({discordId: author.id})
 
         if(!targetUser) {
-            await channel.send("<@" + author + ">" + " you haven't initialized a profile! Do ,start to initialize a profile.")
+            await channel.send("<@" + author + ">" + " you haven't initialized a profile! Use ,start to initialize your profile and begin using the bot.")
         } else {
-            await channel.send("<@" + author + ">" + " you have a balance of " + targetUser.currency)
+            await channel.send("<@" + author + ">" + " your current balance is " + targetUser.currency)
         }
     }
 }
