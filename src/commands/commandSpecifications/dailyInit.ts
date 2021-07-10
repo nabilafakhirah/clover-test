@@ -10,12 +10,12 @@ export const daily: CommandInt = {
         let targetUser = await UserModel.findOne({discordId: author.id})
 
         if(!targetUser) {
-            await channel.send("<@" + author + ">" + " you haven't initialized a profile! Use ,start to initialize your profile and begin using the bot.")
+            await channel.send("<@" + author + ">" + " you haven't initialized a profile! Use ,start to initialize your profile and begin playing Clover. :four_leaf_clover: ")
         } else {
             if(targetUser.lastDaily != -1){
                 var hours = Math.abs(Date.now() - targetUser.lastDaily) / 36e5;
                 if(hours < 24) {
-                    await channel.send("<@" + author + ">" + " you have " + Math.abs(24 - hours) + " hours left before your next daily!")
+                    await channel.send("<@" + author + ">" + " you have " + Math.abs(24 - hours) + " hours left before your next daily! :alarm_clock: ")
                     return;
                 }
                 
@@ -28,7 +28,7 @@ export const daily: CommandInt = {
             targetUser.dailyStreak++
 
             targetUser.save()
-            await channel.send("<@" + author + ">" + " you have claimed your daily! Your current balance = " + targetUser.currency + ". Streak = " + targetUser.dailyStreak)
+            await channel.send("<@" + author + ">" + " you have claimed your daily! :four_leaf_clover: Your current balance = " + targetUser.currency + ". Streak = " + targetUser.dailyStreak)
         }
     }
 }
@@ -46,6 +46,7 @@ export const balance: CommandInt = {
         } else {
             await channel.send("<@" + author + ">" + " your current balance is " + targetUser.currency)
         }
+
     }
 }
 
